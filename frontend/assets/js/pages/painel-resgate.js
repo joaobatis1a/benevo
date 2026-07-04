@@ -10,13 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // --- VARIÁVEIS GLOBAIS DO MÓDULO ---
 let itemSelecionadoId = null; // Guarda o ID do item aberto no modal
 
-// --- 1. VERIFICAÇÃO DE SEGURANÇA ---
+// --- 1. VERIFICAÇÃO DE SEGURANÇA (desativada nesta demo — sem backend real) ---
 function verificarLogin() {
-    const tipoUsuario = localStorage.getItem("user_tipo");
-    if (tipoUsuario !== "BENEFICIARIO") {
-        alert("Acesso negado. Faça login como beneficiário.");
-        window.location.href = "index.html";
-    }
+    // Checagem de login desativada para permitir visualização livre na demo.
 }
 
 function configurarLogout() {

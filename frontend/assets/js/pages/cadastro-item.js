@@ -2,24 +2,15 @@ import { cadastrarItem } from '../services/api.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     
-    // 1. CHECAGEM DUPLA:
+    // 1. CHECAGEM DUPLA (desativada nesta demo — sem backend real):
     // A) Admin está logado?
     const adminToken = localStorage.getItem("token_benevo");
-    if (!adminToken) {
-        alert("Sessão do Admin expirou.");
-        window.location.href = "index.html";
-        return;
-    }
+    // Checagem de token desativada para permitir visualização livre na demo.
 
     // B) Temos um doador identificado para esta sessão?
-    const doadorId = sessionStorage.getItem("temp_doador_id");
-    const doadorNome = sessionStorage.getItem("temp_doador_nome");
-
-    if (!doadorId) {
-        alert("Nenhum doador identificado. Por favor, identifique o doador primeiro.");
-        window.location.href = "menu-doador.html"; // Volta para o menu para escolher Login ou Cadastro
-        return;
-    }
+    const doadorId = sessionStorage.getItem("temp_doador_id") || "demo";
+    const doadorNome = sessionStorage.getItem("temp_doador_nome") || "Doador Demo";
+    // Checagem de doador desativada para permitir visualização livre na demo.
 
     // Feedback visual de quem é o doador (opcional, mas bom pra UX)
     // Se tiver um lugar no HTML, exibe: document.getElementById('nome-doador-display').innerText = doadorNome;
