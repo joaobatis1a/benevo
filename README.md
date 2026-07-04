@@ -2,6 +2,8 @@
 
 Sistema de gestão de doações para ONGs, com controle de estoque, recebimento e distribuição de itens entre doadores e beneficiários.
 
+🔗 **Demo (somente frontend):** [https://benevo-demo.vercel.app/demo.html](https://benevo-demo.vercel.app/demo.html)
+
 ## 🧱 Estrutura do projeto
 
 ```
@@ -53,10 +55,16 @@ benevo-main/
 - Uma instância do MongoDB (local ou Atlas)
 
 ### 1. Configurar o banco de dados
-No arquivo `backend/src/main/resources/application.properties`, defina a conexão com o seu MongoDB:
+Por segurança, o arquivo `application.properties` com a credencial real do banco **não está incluído no repositório**. Em vez disso, existe um arquivo de exemplo:
+```
+backend/src/main/resources/application.properties.example
+```
+Copie esse arquivo, renomeie para `application.properties` (mesma pasta) e preencha com uma URI de conexão válida do MongoDB:
 ```properties
 spring.data.mongodb.uri=mongodb+srv://SEU_USUARIO:SUA_SENHA@SEU_CLUSTER.mongodb.net/benevo?retryWrites=true&w=majority
 ```
+> ⚠️ **Sem essa credencial preenchida, o backend não sobe.** Se você não tem acesso ao banco de dados do projeto, peça a URI de conexão para quem administra o MongoDB Atlas do Benevo, ou configure sua própria instância (local ou um cluster gratuito no Atlas).
+
 > ⚠️ **Importante:** nunca deixe usuário e senha reais commitados nesse arquivo. Use variáveis de ambiente ou um arquivo `application-local.properties` ignorado pelo Git.
 
 ### 2. Rodar o backend
