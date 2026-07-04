@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benevo - Central</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilo Exclusivo da Central */
+        .central-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            width: 90%;
+            margin: 60px auto;
+        }
+        .btn-central {
+            background-color: #1f365c;
+            color: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-central:hover {
+            transform: translateY(-5px);
+            background-color: #2a4a75;
+        }
+        .btn-central i { font-size: 3rem; margin-bottom: 15px; color: #d9b38c; }
+        .btn-central span { font-size: 1.5rem; font-weight: 600; font-family: 'Shrikhand', cursive; letter-spacing: 1px; }
+        
+        /* Botão Sair Diferenciado */
+        .btn-sair { background-color: #dc3545; }
+        .btn-sair:hover { background-color: #c82333; }
+        .btn-sair i { color: white; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">benevo</h1>
+    </header>
+
+    <div class="titulo-container">
+        <h2 class="titulo">Central Administrativa</h2>
+    </div>
+
+    <main class="central-grid">
+        <a href="menu-doador.html" class="btn-central">
+            <i class="fas fa-hand-holding-heart"></i>
+            <span>Doador</span>
+        </a>
+
+        <a href="menu-beneficiario.html" class="btn-central">
+            <i class="fas fa-users"></i>
+            <span>Beneficiário</span>
+        </a>
+
+        <a href="dashboard-admin.html" class="btn-central">
+            <i class="fas fa-boxes"></i>
+            <span>Estoque</span>
+        </a>
+
+        <a href="#" id="btn-logout" class="btn-central btn-sair">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Sair</span>
+        </a>
+    </main>
+
+    <script>
+        document.getElementById('btn-logout').onclick = (e) => {
+            e.preventDefault();
+            localStorage.clear();
+            window.location.href = 'index.html';
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benevo - Resgate de Itens</title>
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/modal.css" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo">benevo</h1>
+        <button id="btn-logout" style="position: absolute; right: 20px; top: 30px; background:none; border:none; color:#d9b38c; cursor:pointer; font-weight:bold;">Sair</button>
+    </header>
+    <br><br>
+
+    <main class="main-gestao-final">
+        <div class="titulo-container">
+            <a href="central.html" class="btn-voltar"><</a>
+            <h2 class="titulo-faixa">Itens Disponíveis</h2>
+        </div>
+        <br>
+        
+        <div class="search-bar-gestao-final">
+            <i class="fas fa-search search-icon-gestao-final"></i>
+            <input type="text" id="campo-busca" placeholder="Buscar por nome ou categoria..." class="search-input-gestao-final">
+        </div>
+
+        <div class="content-wrapper-gestao-final">
+            <aside class="filter-sidebar">
+                <div class="filter-header">
+                    <i class="fas fa-filter filter-icon"></i> Filtros
+                </div>
+                <div class="filter-option filter-highlight">
+                    <label for="mais-recente">Mais Recente</label>
+                    <input type="checkbox" id="mais-recente" checked>
+                </div>
+                <div class="filter-option filter-grayed">
+                    <label for="melhor-estado">Melhor estado</label>
+                    <input type="checkbox" id="melhor-estado">
+                </div>
+            </aside>
+
+            <section class="item-grid" id="grid-itens">
+                <p style="width:100%; text-align:center; margin-top:20px;">Carregando itens do banco de dados...</p>
+            </section>
+        </div>
+    </main>
+    
+    <div id="modal-editar" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="btn-fechar-modal">&times;</span>
+            <h2 id="modalTitle">Detalhes do Item</h2>
+            <form id="itemFormResgate"> 
+                <div class="form-group"><label>Nome:</label><input type="text" id="modal-nome" disabled></div>
+                <div class="form-group"><label>Tamanho:</label><input type="text" id="modal-tamanho" disabled></div>
+                <div class="form-group"><label>Categoria:</label><input type="text" id="modal-categoria" disabled></div>
+                <div class="form-group"><label>Condição:</label><input type="text" id="modal-condicao" disabled></div>
+                <div class="form-group"><label>Descrição:</label><textarea id="modal-descricao" disabled></textarea></div>
+                
+                <div class="modal-actions">
+                    <button type="button" id="btnConfirmarResgate" class="btn-modal-salvar">Confirmar Resgate</button>
+                    <button type="button" id="btnCancelarModal" class="btn-modal-cancelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-sucesso" class="modal">
+        <div class="modal-sucesso-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3>Resgate Confirmado!</h3>
+            <p id="mensagemSucessoTexto"></p>
+            <button type="button" id="btn-entendido" class="btn-modal-ok">Entendido (Sair)</button>
+        </div>
+    </div>
+
+    <script type="module" src="assets/js/services/api.js"></script>
+    <script type="module" src="assets/js/pages/painel-resgate.js"></script>
+</body>
+</html>

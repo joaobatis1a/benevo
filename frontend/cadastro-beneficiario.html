@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benevo - Cadastro Beneficiário</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/modal.css" /> <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">Benevo</h1>
+    </header>
+    <main>
+        <div class="titulo-container">
+            <a href="central.html" class="btn-voltar"><</a>
+            <h2 class="titulo">Novo Beneficiário</h2>
+        </div>
+        <div class="card-cadastro">
+            <form id="form-cad-beneficiario">
+                
+                <div class="form-group-cadastro full-width">
+                    <label>Nome Completo:</label>
+                    <input type="text" id="nome" required placeholder="Ex: Maria da Silva">
+                </div>
+                <div class="form-group-cadastro full-width">
+                    <label>Local (Bairro/Cidade):</label>
+                    <input type="text" id="local" required placeholder="Ex: Centro, Recife">
+                    <small style="color: #ccc; font-size: 0.7rem;">Usado para confirmar sua identidade no login.</small>
+                </div>
+                <div class="form-row-cadastro">
+                     <div class="form-group-cadastro">
+                        <label>Email (Opcional):</label>
+                        <input type="email" id="email">
+                     </div>
+                     <div class="form-group-cadastro">
+                        <label>Telefone (Opcional):</label>
+                        <input type="text" id="telefone">
+                     </div>
+                </div>
+                <div class="form-group-cadastro full-width separador-seguranca">
+                    <label class="titulo-seguranca-label">Segurança (Para recuperar seu ID)</label>
+                    
+                    <label>Pergunta Secreta (Crie uma):</label>
+                    <input type="text" id="pergunta" required placeholder="Ex: Qual apelido da minha mãe?">
+                    
+                    <label>Resposta:</label>
+                    <input type="text" id="resposta" required placeholder="Sua resposta aqui">
+                </div>
+                <button type="submit" class="btn-cadastrar">Realizar Cadastro</button>
+            </form>
+        </div>
+    </main>
+    
+   <!-- MODAL DE SUCESSO DO CADASTRO -->
+<div id="modal-sucesso-cadastro" class="modal">
+        <div class="modal-sucesso-content">
+            <i class="fas fa-check-circle success-icon"></i>
+
+            <h3>Cadastro Realizado!</h3>
+            <p>Seu ID é:</p>
+
+            <h1 id="id-gerado" style="font-size: 3rem; color:#1f365c; margin-bottom:20px;">
+                </h1>
+
+            <button class="btn-modal-ok" id="btn-fechar-modal">OK</button>
+        </div>
+    </div>
+
+    <script type="module" src="assets/js/pages/cadastro-beneficiario.js"></script>
+</body>
+</html>

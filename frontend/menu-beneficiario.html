@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benevo - Menu Beneficiários</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .layout-container {
+            display: grid;
+            grid-template-columns: 250px 1fr 1fr;
+            gap: 20px;
+            width: 95%;
+            max-width: 1200px;
+            margin: 30px auto;
+            height: calc(100vh - 180px);
+        }
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 40px;
+            border-right: 1px solid #ccc;
+            padding-right: 20px;
+        }
+        .btn-menu-lateral {
+            background-color: #1f365c;
+            color: white;
+            padding: 15px;
+            border-radius: 30px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .btn-menu-lateral:hover {
+            transform: scale(1.05);
+            background-color: #2a4a75;
+        }
+        .panel-gray {
+            background-color: #d9d9d9;
+            border-radius: 15px;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .panel-title {
+            text-align: center;
+            color: #000;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .lista-item {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 900px) {
+            .layout-container { grid-template-columns: 1fr; height: auto;}
+            .sidebar-menu { border-right: none; flex-direction: row; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">benevo</h1>
+    </header>
+
+    <div class="titulo-container" style="display: flex; align-items: center; justify-content: center; position: relative;">
+        <a href="central.html" class="btn-voltar" style="top: 15px;"><</a>
+        <h2 class="titulo">Beneficiários</h2>
+    </div>
+
+    <div class="layout-container">
+        <aside class="sidebar-menu">
+            <a href="cadastro-beneficiario.html" class="btn-menu-lateral">Cadastrar Beneficiário</a>
+            <a href="login-beneficiario.html" class="btn-menu-lateral">Logar Beneficiário</a>
+        </aside>
+
+        <section class="panel-gray">
+            <h3 class="panel-title">Últimos Cadastrados</h3>
+            <div id="lista-ultimos-benef">
+                <p style="text-align:center; color:#666;">Carregando...</p>
+            </div>
+        </section>
+
+        <section class="panel-gray">
+            <h3 class="panel-title">Relatórios</h3>
+            <div style="text-align: center; margin-top: 50px; color: #666;">
+                <i class="fas fa-chart-pie" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <p>Estatísticas em breve.</p>
+            </div>
+        </section>
+    </div>
+
+    <script type="module">
+        import { API_BASE_URL } from './assets/js/services/api.js';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('lista-ultimos-benef');
+            try {
+                // Endpoint criado no Backend na Sprint 5
+                const res = await fetch(`${API_BASE_URL}/admin/ultimos-beneficiarios`);
+                const lista = await res.json();
+
+                container.innerHTML = '';
+                
+                if(lista.length === 0) {
+                    container.innerHTML = '<p style="text-align:center;">Nenhum beneficiário recente.</p>';
+                    return;
+                }
+
+                lista.forEach(b => {
+                    const div = document.createElement('div');
+                    div.className = 'lista-item';
+                    
+                    // Mostra status colorido
+                    const corStatus = b.status === 'Aprovado' ? 'green' : 'orange';
+
+                    div.innerHTML = `
+                        <strong>${b.nome}</strong><br>
+                        <span style="font-size:0.8rem; color:#555;">Local: ${b.bairroCidade}</span><br>
+                    `;
+                    container.appendChild(div);
+                });
+
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = '<p style="text-align:center; color:red;">Erro ao carregar dados.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

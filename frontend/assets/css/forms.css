@@ -1,0 +1,474 @@
+/* ===========================
+   COMPONENTES PRINCIPAIS
+=========================== */
+
+.card-login,
+.card-cadastro,
+.card-doacao,
+.card-login-beneficiario {
+  background-color: #1d3752;
+  border-radius: 40px;
+  box-shadow: 5px 7px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.card-login {
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 300px;
+  margin: 0 0 20px;
+}
+
+.card-cadastro {
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 600px;
+  margin: 50px 0 20px;
+}
+
+.card-login-beneficiario {
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 370px;
+  margin: 20px auto;
+}
+
+.card-doacao {
+  background-color: #1f3a56;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  padding: 20px 25px;
+  text-align: left;
+  transition: all 0.3s ease;
+  margin: auto;
+}
+
+.card-login:hover,
+.card-cadastro:hover,
+.card-doacao:hover {
+  transform: translateY(-3px);
+}
+
+
+/* ===========================
+   FORMULÁRIOS PRINCIPAIS
+=========================== */
+
+#form-login,
+#form-login-doador,
+#form-login-benef,
+.form-ajuda {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+#form-login label,
+#form-login-doador label,
+#form-login-benef label,
+.form-ajuda label {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+#form-login input,
+#form-login-doador input,
+#form-login-benef input,
+.form-ajuda input,
+#palavra-chave-select,
+#resposta-secreta {
+  width: 100%;
+  padding: 8px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+#form-login input,
+#form-login-doador input,
+#form-login-benef input {
+  width: 220px;
+}
+
+#form-login input:focus,
+#form-login-doador input:focus,
+#form-login-benef input:focus,
+.form-group-cadastro input:focus,
+.form-ajuda input:focus,
+#palavra-chave-select:focus,
+#resposta-secreta:focus {
+  border-color: #d9b38c;
+  box-shadow: 0 0 4px #d9b38c;
+}
+
+
+/* ===========================
+   BOTÕES
+=========================== */
+
+.btn-entrar,
+.btn-cadastrar,
+.btn-finalizar {
+  margin-top: 20px;
+  background-color: #1d3752;
+  color: #d9b38c;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+
+.btn-entrar:hover,
+.btn-cadastrar:hover,
+.btn-finalizar:hover {
+  background-color: #fff;
+  color: #1d3752;
+  transform: translateY(-2px);
+}
+
+
+/* ===========================
+   CADASTRO - CAMPOS E LAYOUT
+=========================== */
+
+#form-cad-doador {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 5%;
+  width: 100%;
+}
+
+.form-group-cadastro {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.form-row-cadastro {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 5%;
+}
+
+.form-row-cadastro .form-group-cadastro {
+  width: 47.5%;
+}
+
+.form-group-cadastro label {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.form-group-cadastro input[type="text"],
+.form-group-cadastro input[type="email"],
+.form-group-cadastro input[type="password"],
+.form-group-cadastro input[type="tel"],
+.card-cadastro select {
+  width: 100%;
+  padding: 8px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.validation-icon {
+  position: absolute;
+  right: 15px;
+  top: 32px;
+  color: #28a745;
+  font-size: 0.9rem;
+}
+
+
+.password-rules {
+  padding: 2px 0;
+  margin-top: 2px;
+}
+
+.password-rules ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.password-rules li {
+  color: #ccc;
+  font-size: 0.65rem;
+  line-height: 1.1;
+  padding-left: 10px;
+  position: relative;
+}
+
+.password-rules li::before {
+  content: '•';
+  color: #ccc;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+
+/* ===========================
+   ÁREA DE UPLOAD
+=========================== */
+
+.upload-area {
+  background-color: #f5f5f5;
+  border-radius: 25px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  padding: 0 15px;
+}
+
+.upload-icon {
+  font-size: 1rem;
+  color: #1d3752;
+  pointer-events: none;
+}
+
+.upload-area .upload-text {
+  font-size: 0.85rem;
+  color: #1d3752;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.file-input-hidden {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+/* ===========================
+   LINKS E TEXTO AUXILIAR
+=========================== */
+
+.ja-tem-conta {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.ja-tem-conta a,
+.ja-tem-conta a:visited {
+  color: #d9b38c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ja-tem-conta a:hover {
+  color: #fff;
+}
+
+
+/* ===========================
+   DOAÇÃO - CAMPOS, UPLOAD E TEXTOS
+=========================== */
+
+.card-doacao h2 {
+  text-align: center;
+  color: #bba284;
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+#form-doacao label {
+  display: block;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+#form-doacao input,
+#form-doacao select,
+#form-doacao textarea {
+  width: 100%;
+  padding: 7px 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  outline: none;
+}
+
+.linha-dupla {
+  display: flex;
+  gap: 10px;
+}
+
+.campo {
+  flex: 1;
+}
+
+#form-doacao textarea {
+  resize: none;
+  height: 60px;
+}
+
+.texto-fotos {
+  color: #fff;
+  font-size: 12px;
+  margin: 8px 0 6px;
+  text-align: center;
+}
+
+.upload-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.upload-box {
+  background-color: #d9d9d9;
+  color: #1f3a56;
+  font-size: 18px;
+  border-radius: 10px;
+  width: 80px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.link-ajuda {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+
+.link-ajuda a {
+  color: #d9b38c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link-ajuda a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.texto-ajuda {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.area-resultados {
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.placeholder-resultado {
+  color: #d9b38c;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+#palavra-chave-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%231D3752' d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+
+/* ===========================
+   SEÇÃO DE SEGURANÇA
+=========================== */
+
+.card-cadastro .separador-seguranca {
+  padding-top: 15px;
+  margin-top: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.titulo-seguranca-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #d9b38c;
+  margin-bottom: 10px;
+  display: block;
+}
+
+
+/* ===========================
+   FORM BENEFICIÁRIO - ESPAÇAMENTO
+=========================== */
+
+#form-cad-beneficiario > div.form-group-cadastro {
+  margin-bottom: 15px;
+}
+
+#form-cad-beneficiario .form-row-cadastro {
+  margin-bottom: 15px;
+}
+
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+@media (max-width: 650px) {
+  .card-cadastro {
+    padding: 20px 25px;
+    margin-top: 30px;
+  }
+
+  .form-row-cadastro {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-row-cadastro .form-group-cadastro {
+    width: 100%;
+  }
+
+  .validation-icon {
+    top: 32px;
+  }
+}

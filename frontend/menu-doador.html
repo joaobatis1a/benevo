@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benevo - Menu Doadores</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* (Mantenha o CSS do painel cinza que passei na resposta anterior) */
+        .layout-container {
+            display: grid;
+            grid-template-columns: 250px 1fr 1fr;
+            gap: 20px;
+            width: 95%;
+            max-width: 1200px;
+            margin: 30px auto;
+            height: calc(100vh - 180px);
+        }
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 40px;
+            border-right: 1px solid #ccc;
+            padding-right: 20px;
+        }
+        .btn-menu-lateral {
+            background-color: #1f365c;
+            color: white;
+            padding: 15px;
+            border-radius: 30px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        .btn-menu-lateral:hover {
+            transform: scale(1.05);
+            background-color: #2a4a75;
+        }
+        .panel-gray {
+            background-color: #d9d9d9;
+            border-radius: 15px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .panel-title { text-align: center; font-weight: 500; margin-bottom: 20px; }
+        .lista-item { background: white; padding: 10px; margin-bottom: 10px; border-radius: 8px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">benevo</h1>
+    </header>
+
+    <div class="titulo-container" style="display: flex; align-items: center; justify-content: center; position: relative;">
+        <a href="central.html" class="btn-voltar" style="top: 15px;"><</a>
+        <h2 class="titulo">Doadores</h2>
+    </div>
+
+    <div class="layout-container">
+        <aside class="sidebar-menu">
+            <a href="cadastro-doador.html" class="btn-menu-lateral">Cadastrar Doador</a>
+            
+            <a href="login-doador.html" class="btn-menu-lateral">Identificar Doador</a>
+        </aside>
+
+        <section class="panel-gray">
+            <h3 class="panel-title">Últimas Doações</h3>
+            <div id="lista-ultimas-doacoes"><p style="text-align:center">Carregando...</p></div>
+        </section>
+
+        <section class="panel-gray">
+            <h3 class="panel-title">Relatórios</h3>
+            <div style="text-align:center; margin-top:50px; color:#666;">
+                <i class="fas fa-chart-bar" style="font-size:2rem;"></i>
+                <p>Em breve</p>
+            </div>
+        </section>
+    </div>
+
+    <script type="module">
+        import { API_BASE_URL } from './assets/js/services/api.js';
+        
+        // Limpa qualquer sessão de doador residual ao entrar no menu
+        sessionStorage.removeItem('temp_doador_id');
+        sessionStorage.removeItem('temp_doador_nome');
+
+        // Carrega lista (mesma lógica anterior)
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('lista-ultimas-doacoes');
+            try {
+                const res = await fetch(`${API_BASE_URL}/admin/ultimas-doacoes`);
+                const itens = await res.json();
+                container.innerHTML = '';
+                if(!itens.length) { container.innerHTML = '<p style="text-align:center">Sem dados.</p>'; return; }
+                itens.forEach(i => {
+                    container.innerHTML += `
+                        <div class="lista-item">
+                            <strong>${i.nome}</strong><br>
+                            <span style="font-size:0.8rem">${i.categoria} - ${new Date(i.dataEntrada).toLocaleDateString('pt-BR')}</span>
+                        </div>`;
+                });
+            } catch (e) { container.innerHTML = '<p>Erro na conexão.</p>'; }
+        });
+    </script>
+</body>
+</html>

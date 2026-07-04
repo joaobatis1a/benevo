@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benevo - Recuperar ID</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/modal.css" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    
+    <style>
+        .resultado-item {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: transform 0.2s;
+        }
+        .resultado-item:hover {
+            transform: scale(1.02);
+            border-color: #1d3752;
+        }
+        .resultado-nome { color: #1d3752; font-weight: bold; }
+        .resultado-info { font-size: 0.8rem; color: #666; }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo">Benevo</h1>
+    </header>
+
+    <main>
+        <div class="titulo-container">
+            <a href="login-beneficiario.html" class="btn-voltar"><</a> 
+            <h2 class="titulo">Recuperar ID</h2>
+        </div>
+
+        <div class="card-login" style="max-width: 400px;"> 
+            <p class="texto-ajuda" style="color: #fff; text-align: center; margin-bottom: 15px;">
+                Digite seu nome, bairro ou cidade para localizarmos seu cadastro.
+            </p>
+            
+            <div class="form-ajuda">
+                <input type="text" id="campo-busca" placeholder="Ex: Maria, Recife, Centro..." required />
+                <button id="btn-buscar" class="btn-entrar">Buscar Cadastro</button>
+            </div>
+
+            <div id="lista-resultados" class="area-resultados" style="width: 100%; margin-top: 20px;">
+                </div>
+        </div>
+
+        <div id="modal-seguranca" class="modal">
+            <div class="modal-content">
+                <h3 id="titulo-modal">Confirmar Identidade</h3>
+                <p>Responda sua pergunta de segurança:</p>
+                <p id="pergunta-seguranca" style="font-weight: bold; color: #1f365c; margin: 10px 0;"></p>
+                <input type="text" id="resposta-modal" placeholder="Sua resposta..." style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                <div class="modal-actions">
+                    <button id="btn-confirmar-seguranca" class="btn-modal-salvar">Confirmar</button>
+                    <button onclick="document.getElementById('modal-seguranca').classList.remove('visivel')" class="btn-modal-cancelar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { API_BASE_URL } from './assets/js/services/api.js';
+
+        const btnBuscar = document.getElementById('btn-buscar');
+        const lista = document.getElementById('lista-resultados');
+        const modal = document.getElementById('modal-seguranca');
+        let idSelecionado = null;
+
+        btnBuscar.addEventListener('click', async () => {
+            const termo = document.getElementById('campo-busca').value;
+            if(!termo) return alert("Digite algo para buscar.");
+
+            lista.innerHTML = "<p style='color:white; text-align:center'>Buscando...</p>";
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/beneficiarios/ajuda-login?busca=${termo}`, {
+                    headers: { "Authorization": "Bearer " + localStorage.getItem("token_benevo") || "" } 
+                });
+                const dados = await res.json();
+
+                lista.innerHTML = "";
+                if(dados.length === 0) {
+                    lista.innerHTML = "<p style='color:white; text-align:center'>Nenhum registro encontrado.</p>";
+                    return;
+                }
+
+                dados.forEach(user => {
+                    const item = document.createElement('div');
+                    item.className = 'resultado-item';
+                    item.innerHTML = `
+                        <div class="resultado-nome">${user.nome}</div>
+                        <div class="resultado-info">${user.bairro || 'Local não informado'}</div>
+                    `;
+                    item.onclick = () => abrirModalSeguranca(user);
+                    lista.appendChild(item);
+                });
+
+            } catch(err) {
+                console.error(err);
+                lista.innerHTML = "<p style='color:white; text-align:center'>Erro na busca.</p>";
+            }
+        });
+
+        function abrirModalSeguranca(user) {
+            idSelecionado = user.idInterno; // Este já é o ID Benevo (JOSE-123)
+            document.getElementById('pergunta-seguranca').innerText = user.pergunta;
+            document.getElementById('resposta-modal').value = '';
+            modal.classList.add('visivel');
+        }
+
+        document.getElementById('btn-confirmar-seguranca').onclick = async () => {
+            const resposta = document.getElementById('resposta-modal').value;
+            
+            try {
+                const res = await fetch(`${API_BASE_URL}/beneficiarios/responder-desafio`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ idBenevo: idSelecionado, resposta })
+                });
+
+                if(res.ok) {
+                    const loginData = await res.json();
+                    
+                    // CORREÇÃO AQUI: loginData.idBenevo mostra o ID curto e amigável
+                    alert(`Identidade Confirmada!\n\nSEU ID DE ACESSO É: ${loginData.idBenevo}\n\nVocê será logado agora.`);
+                    
+                    // Login Automático
+                    localStorage.setItem("token_benevo", loginData.token);
+                    localStorage.setItem("user_id", loginData.id); // ID do banco para operações internas
+                    localStorage.setItem("user_nome", loginData.nome);
+                    localStorage.setItem("user_tipo", "BENEFICIARIO");
+                    
+                    window.location.href = "painel-resgate-beneficiario.html";
+                } else {
+                    alert("Resposta incorreta.");
+                }
+            } catch(err) {
+                console.error(err);
+                alert("Erro ao validar.");
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+backend/target/
+backend/.idea/
+backend/*.iml
+
+.vscode/
+.idea/
+*.log
+.env
+.venv
+
+resources/
+application.properties

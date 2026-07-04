@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benevo - Doação</title>
+    
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo">benevo</h1>
+        <button id="btn-logout" style="position: absolute; right: 20px; top: 30px; background:none; border:none; color:#d9b38c; cursor:pointer; font-weight:bold; font-size:1rem;">Sair</button>
+    </header>
+    <main>
+        <div class="titulo-container">
+            <a href="#" id="btn-voltar-seta" class="btn-voltar" style="display:none;"><</a>
+            <h2 class="titulo">Sua Doação</h2>
+        </div>
+        <br>   
+        <div class="card-doacao">
+            <form id="form-doacao">
+                <label for="nome">Nome do produto:</label>
+                <input type="text" id="nome" placeholder="Digite o nome do produto" required />
+
+                <div class="linha-dupla">
+                    <div class="campo">
+                        <label for="categoria">Categoria:</label>
+                        <select id="categoria" required>
+                            <option value="">N/A</option>
+                            <option value="roupa">Roupa</option>
+                            <option value="calçado">Calçado</option>
+                            <option value="brinquedo">Brinquedo</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="tamanho">Tamanho:</label>
+                        <select id="tamanho" required>
+                            <option value="">N/A</option>
+                            <option value="p">P</option>
+                            <option value="m">M</option>
+                            <option value="g">G</option>
+                            <option value="gg">GG</option>
+                            <option value="unico">Único</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="condicao">Condição (1=Ruim, 5=Novo):</label>
+                    <select id="condicao" required>
+                        <option value="">Selecione...</option>
+                        <option value="1">1 - Precisa de reparo</option>
+                        <option value="2">2 - Usado (marcas visíveis)</option>
+                        <option value="3">3 - Usado (bom estado)</option>
+                        <option value="4">4 - Muito bom</option>
+                        <option value="5">5 - Novo / Nunca usado</option>
+                    </select>
+                </div>
+
+                <label for="descricao">Motivo da doação / Detalhes:</label>
+                <textarea id="descricao" maxlength="1000" placeholder="Ex: Ganhei mas não serviu..." required></textarea>
+
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" id="btn-cancelar" class="btn-finalizar" style="background-color: #6c757d; width: 40%;">Cancelar</button>
+                    <button type="submit" id="btn-finalizar" class="btn-finalizar" style="width: 60%;">Finalizar Doação</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script type="module" src="./assets/js/services/api.js"></script>
+    <script type="module" src="./assets/js/pages/cadastro-item.js"></script>
+</body>
+</html>

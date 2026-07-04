@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benevo - Login</title>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/forms.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="logo">Benevo</h1>
+  </header>
+
+  <main>
+    <div class="titulo-container">
+      <h2 class="titulo">Login</h2>
+    </div>
+<br>
+    <div class="card-login">
+      <form id="form-login">
+        <label for="login">ID Benevo / Email</label>
+        <input type="text" id="login" placeholder="Digite seu usuário ou email" required />
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required />
+        <button type="submit" class="btn-entrar">Entrar</button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="./assets/js/services/api.js"></script>
+  <script type="module" src="./assets/js/pages/login.js"></script>
+</body>
+</html>

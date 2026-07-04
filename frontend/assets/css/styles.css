@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ===== CABEÇALHO ===== */
+.header {
+  background: linear-gradient(90deg, #1f365c, #274b7a);
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 0 0 40px 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-family: "Shrikhand", cursive;
+  font-size: 2.5rem;
+  color: #d9b38c;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 140px);
+  position: relative;
+}
+
+.titulo {
+  font-size: 1.3rem;
+  color: #6b6b6b;
+  font-weight: 800;
+  width: 100%;
+}
+
+/* ===== TÍTULO E LINHA ===== */
+.titulo-container {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0 35px;
+  border-bottom: 1px solid #ccc;
+  margin-top: 20px;
+  position: relative;
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+.btn-voltar {
+  position: absolute;
+  left: 20px;
+  top: 5%;
+  font-size: 45px;
+  color: #1f365c;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-voltar:hover {
+  transform: scale(1.2);
+  color: #d9b38c;
+}
+
+/* ===== ÁREA ADMIN ===== */
+.main-admin {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 15px;
+  margin: 0 auto;
+}
+
+/* ===== TABELA DE APROVAÇÕES ===== */
+#tabela-aprovacoes {
+  width: 60%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#tabela-aprovacoes thead th {
+  background-color: #1f365c;
+  color: #d9b38c;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 2px solid #274b7a;
+}
+
+#tabela-aprovacoes tbody td {
+  background-color: #ffffff;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#tabela-aprovacoes thead tr:first-child th:first-child {
+  border-top-left-radius: 12px;
+}
+
+#tabela-aprovacoes thead tr:first-child th:last-child {
+  border-top-right-radius: 12px;
+}
+
+/* ===== BOTÕES ===== */
+.btn-acao {
+  padding: 8px 12px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-aprovar {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-rejeitar {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-detalhes {
+  background-color: #1d3752;
+  color: #d9b38c;
+}
+
+.btn-acao:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-faixa-admin {
+    font-size: 1.6rem;
+  }
+
+  #tabela-aprovacoes,
+  #tabela-aprovacoes tbody,
+  #tabela-aprovacoes tr,
+  #tabela-aprovacoes td {
+    display: block;
+    width: 100%;
+  }
+
+  #tabela-aprovacoes thead {
+    display: none;
+  }
+
+  #tabela-aprovacoes tbody tr {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+  }
+
+  #tabela-aprovacoes tbody td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border: none;
+  }
+
+  #tabela-aprovacoes tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+    text-align: left;
+    color: #1d3752;
+  }
+
+  #tabela-aprovacoes tbody tr td[data-label="Ações"] {
+    text-align: left;
+    padding-left: 12px;
+  }
+
+  .btn-acao {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/* --- CONTROLE DE SENHA (Olhinho) --- */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100% !important;
+    padding-right: 40px !important; /* Espaço para o ícone */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 1rem;
+    z-index: 10;
+}
+
+.toggle-password:hover {
+    color: #1f365c;
+}
+
+/* --- REGRAS DE SENHA --- */
+.password-rules {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 15px 5px;
+}
+
+.password-rules li {
+    font-size: 0.75rem;
+    color: #ccc; /* Cinza claro quando não atendido */
+    margin-bottom: 2px;
+    transition: color 0.3s;
+}
+
+.password-rules li::before {
+    content: "• ";
+}
+
+.password-rules li.valid {
+    color: #4caf50; /* Verde quando atendido */
+    font-weight: 600;
+}
+
+.password-rules li.invalid {
+    color: #e57373; /* Vermelho claro se erro */
+}

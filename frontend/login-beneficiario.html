@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benevo - Acesso Beneficiário</title>
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/modal.css" /> <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo">Benevo</h1>
+    </header>
+
+    <main>
+        <div class="titulo-container">
+            <a href="central.html" class="btn-voltar"><</a>
+            <h2 class="titulo">Acesso Beneficiário</h2>
+        </div>
+        <br>
+        
+        <div class="card-login">
+            <form id="form-login-benef">
+                <label for="idBenevo">Seu ID Benevo:</label>
+                <input type="text" id="idBenevo" required placeholder="Ex: JOSE-123">
+                
+                <label for="infoSecundaria">Confirme sua identidade:</label>
+                <input type="text" id="infoSecundaria" required placeholder="Seu Nome OU seu Bairro">
+                
+                <button type="submit" class="btn-entrar">Entrar</button>
+            </form>
+            <p class="link-ajuda"><a href="ajuda-login-beneficiario.html">Esqueci meu ID</a></p>
+        </div>
+
+        <div id="modal-desafio" class="modal">
+            <div class="modal-content">
+                <h3 style="color: #1f365c; font-family: 'Baloo 2'; margin-bottom:10px;">Confirmação de Identidade</h3>
+                
+                <p>Você é <strong id="nome-confirmacao" style="color:#d9b38c; font-size: 1.1rem;"></strong>?</p>
+                
+                <p style="margin-top: 15px; font-size: 0.9rem;">Para confirmar, responda sua pergunta de segurança:</p>
+                <p id="pergunta-texto" style="color: #1f365c; font-weight:bold; margin: 5px 0 15px;"></p>
+                
+                <input type="text" id="resposta-desafio" placeholder="Sua resposta secreta..." style="width:100%; padding:10px; border:1px solid #ccc; border-radius: 5px;">
+                
+                <div class="modal-actions">
+                    <button id="btn-responder-desafio" class="btn-modal-salvar">Confirmar</button>
+                    <button type="button" id="btn-cancelar-desafio" class="btn-modal-cancelar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="assets/js/pages/login-beneficiario.js"></script>
+</body>
+</html>

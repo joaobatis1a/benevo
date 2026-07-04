@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benevo - Gestão de Itens</title>
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/modal.css" />
+    
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo">benevo</h1>
+    </header>
+<br>
+<br>
+    <main class="main-gestao-final">
+        <div class="gestao-faixa-superior">
+            <a href="central.html" class="btn-voltar-faixa"><</a>
+            <h2 class="titulo-faixa">Gestão</h2>
+        </div>
+        <br>
+        <div class="search-bar-gestao-final">
+            <i class="fas fa-search search-icon-gestao-final"></i>
+            <input type="text" placeholder="Pesquisar itens..." class="search-input-gestao-final">
+        </div>
+
+        <div class="content-wrapper-gestao-final">
+            <aside class="filter-sidebar">
+                <div class="filter-header">
+                    <i class="fas fa-filter filter-icon"></i>
+                </div>
+                
+<div class="filter-option filter-highlight">
+                    <label for="mais-recente">Mais Recente</label>
+                    <input type="checkbox" id="mais-recente" checked>
+                </div>
+                <div class="filter-option filter-grayed">
+                    <label for="mais-antigo">Mais Antigo</label>
+                    <input type="checkbox" id="mais-antigo">
+                </div>
+                <div class="filter-option filter-highlight">
+                    <label for="melhor-estado">Melhor estado</label>
+                    <input type="checkbox" id="melhor-estado" checked>
+                </div>
+                <div class="filter-option filter-grayed last-filter">
+                    <label for="pior-estado">Pior estado</label>
+                    <input type="checkbox" id="pior-estado">
+                </div>
+            </aside>
+
+            <section class="item-grid">
+                </section>
+        </div>
+    </main>
+    
+    <div id="modal-editar" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Detalhes do Item</h2>
+            <form id="itemForm">
+                <div class="form-group"><label for="nome">Nome:</label><input type="text" id="nome" name="nome" value="Ursinho de Pelúcia Bege" disabled></div>
+                <div class="form-group"><label for="tamanho">Tamanho:</label><input type="text" id="tamanho" name="tamanho" value="M" disabled></div>
+                <div class="form-group"><label for="categoria">Categoria:</label><input type="text" id="categoria" name="categoria" value="Brinquedo" disabled></div>
+                <div class="form-group"><label for="doador">Doador:</label><input type="text" id="doador" name="doador" value="Eliza Cordeiro" disabled></div>
+                <div class="form-group"><label for="estado">Estado (1-5):</label><input type="number" id="estado" name="estado" value="4" min="1" max="5" disabled></div>
+                <div class="form-group"><label for="data">Data de Doação:</label><input type="text" id="data" name="data" value="29/10/2025" disabled></div>
+                <div class="form-group"><label for="descricao">Descrição Adicional:</label><textarea id="descricao" name="descricao" disabled>Ursinho em ótimo estado, pouquíssimo uso.</textarea></div>
+                <div class="modal-actions">
+                    <button type="submit" id="btnSalvar" class="btn-modal-salvar" style="display: none;">Salvar Alterações</button>
+                    <button type="button" class="btn-modal-cancelar" onclick="closeModal()">Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function openModal(mode, itemId) {
+            const modal = document.getElementById('modal-editar');
+            const itemForm = document.getElementById('itemForm');
+            const modalTitle = document.getElementById('modalTitle');
+            const btnSalvar = document.getElementById('btnSalvar');
+
+            modal.classList.add('visivel');
+
+            if (mode === 'edit') {
+                modalTitle.textContent = 'Editar Item ' + itemId;
+                btnSalvar.style.display = 'inline-block';
+                itemForm.querySelectorAll('input, textarea').forEach(el => { el.disabled = false; });
+            } else { // 'view'
+                modalTitle.textContent = 'Detalhes do Item ' + itemId;
+                btnSalvar.style.display = 'none';
+                itemForm.querySelectorAll('input, textarea').forEach(el => { el.disabled = true; });
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modal-editar').classList.remove('visivel');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal-editar')) {
+                closeModal();
+            }
+        }
+    </script>
+
+    <script type="module" src="assets/js/services/api.js"></script> 
+    <script type="module" src="assets/js/pages/dashboard-admin.js"></script>
+
+</body>
+</html>
