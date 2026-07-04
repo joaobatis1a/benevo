@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benevo - Demo</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* ===== CABEÇALHO ===== */
+    .header {
+      background: linear-gradient(90deg, #1f365c, #274b7a);
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-family: "Shrikhand", cursive;
+      font-size: 2.5rem;
+      color: #d9b38c;
+      letter-spacing: 2px;
+      text-transform: lowercase;
+    }
+
+    /* ===== CONTEÚDO PRINCIPAL ===== */
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 16px 60px;
+    }
+
+    .titulo-container {
+      width: 100%;
+      text-align: center;
+      padding: 25px 0 20px;
+      border-bottom: 1px solid #ccc;
+      margin-top: 20px;
+    }
+
+    .titulo {
+      font-size: 1.3rem;
+      color: #6b6b6b;
+      font-weight: 800;
+    }
+
+    .subtitulo {
+      font-size: 0.85rem;
+      color: #9a9a9a;
+      margin-top: 6px;
+    }
+
+    .aviso {
+      background: #fff8e1;
+      border: 1px solid #ecd48a;
+      color: #7a5c00;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      margin: 26px 0 34px;
+    }
+
+    .grupo {
+      margin-bottom: 32px;
+    }
+
+    .grupo h2 {
+      font-family: "Poppins", sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1f365c;
+      border-bottom: 2px solid #1f365c22;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    a.card {
+      display: block;
+      background: #ffffff;
+      border: 1px solid #e2e2e2;
+      border-radius: 16px;
+      padding: 16px 18px;
+      text-decoration: none;
+      color: #1f365c;
+      box-shadow: 0 2px 10px rgba(31, 54, 92, 0.05);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    a.card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(31, 54, 92, 0.15);
+      border-color: #d9b38c;
+    }
+
+    a.card .nome {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 3px;
+      color: #1f365c;
+    }
+
+    a.card .desc {
+      font-size: 12px;
+      color: #8a8a8a;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="logo">Benevo</h1>
+  </header>
+
+  <main>
+    <div class="titulo-container">
+      <h2 class="titulo">Demo do projeto</h2>
+      <p class="subtitulo">Navegue por todas as telas sem precisar de login</p>
+    </div>
+
+    <div class="aviso">
+      ⚠️ Esta é uma demo apenas do <strong>frontend</strong>. Formulários, login e ações que dependem da API
+      (backend em Java/Spring Boot) não vão funcionar de verdade — serve apenas para visualizar a interface.
+    </div>
+
+    <div class="grupo">
+      <h2>Doador</h2>
+      <div class="cards">
+        <a class="card" href="login-doador.html">
+          <span class="nome">Login Doador</span>
+          <span class="desc">Tela de acesso do doador</span>
+        </a>
+        <a class="card" href="cadastro-doador.html">
+          <span class="nome">Cadastro Doador</span>
+          <span class="desc">Criar conta de doador</span>
+        </a>
+        <a class="card" href="menu-doador.html">
+          <span class="nome">Menu Doador</span>
+          <span class="desc">Painel principal do doador</span>
+        </a>
+        <a class="card" href="cadastro-item.html">
+          <span class="nome">Cadastrar Doação</span>
+          <span class="desc">Registrar um item para doação</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grupo">
+      <h2>Beneficiário</h2>
+      <div class="cards">
+        <a class="card" href="login-beneficiario.html">
+          <span class="nome">Login Beneficiário</span>
+          <span class="desc">Tela de acesso do beneficiário</span>
+        </a>
+        <a class="card" href="cadastro-beneficiario.html">
+          <span class="nome">Cadastro Beneficiário</span>
+          <span class="desc">Criar conta de beneficiário</span>
+        </a>
+        <a class="card" href="ajuda-login-beneficiario.html">
+          <span class="nome">Recuperar ID</span>
+          <span class="desc">Ajuda para recuperar acesso</span>
+        </a>
+        <a class="card" href="menu-beneficiario.html">
+          <span class="nome">Menu Beneficiário</span>
+          <span class="desc">Painel principal do beneficiário</span>
+        </a>
+        <a class="card" href="painel-resgate-beneficiario.html">
+          <span class="nome">Resgate de Itens</span>
+          <span class="desc">Resgatar itens disponíveis</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grupo">
+      <h2>Administração</h2>
+      <div class="cards">
+        <a class="card" href="index.html">
+          <span class="nome">Login (Admin)</span>
+          <span class="desc">Tela inicial / login geral</span>
+        </a>
+        <a class="card" href="central.html">
+          <span class="nome">Central</span>
+          <span class="desc">Painel central</span>
+        </a>
+        <a class="card" href="dashboard-admin.html">
+          <span class="nome">Gestão de Itens</span>
+          <span class="desc">Dashboard administrativo</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      Projeto Benevo · demo visual publicada no Vercel
+    </footer>
+  </main>
+
+</body>
+</html>
