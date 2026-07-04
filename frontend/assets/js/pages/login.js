@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.location.href = 'cadastro-item.html'; 
                     } else {
                         // Outros tipos, se houver
-                        window.location.href = 'index.html';
+                        window.location.href = 'login-admin.html';
                     }
                 })
                 .catch(error => {

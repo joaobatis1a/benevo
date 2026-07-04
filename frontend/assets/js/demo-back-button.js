@@ -1,6 +1,6 @@
 (function () {
   var btn = document.createElement("a");
-  btn.href = "demo.html";
+  btn.href = "index.html";
   btn.setAttribute("title", "Voltar para o menu da demo");
   btn.innerHTML = "🗂️ Menu da demo";
   btn.style.position = "fixed";

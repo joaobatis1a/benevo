@@ -18,7 +18,7 @@ function verificarLogin() {
 function configurarLogout() {
     document.getElementById("btn-logout").onclick = () => {
         localStorage.clear();
-        window.location.href = "index.html";
+        window.location.href = "login-admin.html";
     };
 }
 
