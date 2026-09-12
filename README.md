@@ -14,6 +14,8 @@ Sistema de gestão de doações para ONGs, com controle de estoque, recebimento 
 
 🔗 **Demo (somente frontend):** [benevo-demo.vercel.app/demo.html](https://benevo-demo.vercel.app/demo.html)
 
+![Captura de tela do Benevo](docs/img/preview.png)
+
 ## 🧱 Estrutura do projeto
 
 ```
