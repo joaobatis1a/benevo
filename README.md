@@ -1,8 +1,18 @@
-# 🌱 Benevo
+# Benevo
+
+**Gestão de doações para ONGs** · Java · MongoDB
+
+[![Demo](https://img.shields.io/badge/demo-online-3B82F6?style=flat-square)](https://benevo-demo.vercel.app/demo.html)
+[![Java](https://img.shields.io/badge/Java-17-3B82F6?style=flat-square&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com)
+
+> **Projeto acadêmico desenvolvido em equipe, 2º lugar.**
+> Minha atuação: Front-end Lead & Scrum Master.
+> Repositório original da equipe: [guifigueireedo/benevo-project](https://github.com/guifigueireedo/benevo-project)
 
 Sistema de gestão de doações para ONGs, com controle de estoque, recebimento e distribuição de itens entre doadores e beneficiários.
 
-🔗 **Demo (somente frontend):** [https://benevo-demo.vercel.app/demo.html](https://benevo-demo.vercel.app/demo.html)
+🔗 **Demo (somente frontend):** [benevo-demo.vercel.app/demo.html](https://benevo-demo.vercel.app/demo.html)
 
 ## 🧱 Estrutura do projeto
 
@@ -75,7 +85,7 @@ cd backend
 O servidor sobe por padrão em `http://localhost:8080`.
 
 ### 3. Rodar o frontend
-O frontend é HTML/CSS/JS puro — não precisa de build. Basta servir a pasta `frontend/`:
+O frontend é HTML/CSS/JS puro, não precisa de build. Basta servir a pasta `frontend/`:
 ```bash
 cd frontend
 python3 -m http.server 5500
@@ -91,7 +101,7 @@ Este projeto usa Spring Security para proteger rotas autenticadas via token. Cer
 
 ## 🌐 Demo (somente frontend) no Vercel
 
-Este repositório também pode ser publicado como uma **demo visual** no Vercel — mostrando apenas a interface (`frontend/`), sem o backend.
+Este repositório também pode ser publicado como uma **demo visual** no Vercel, mostrando apenas a interface (`frontend/`), sem o backend.
 
 ### ⚠️ O que funciona
 - Navegação entre as páginas (`index.html`, `cadastro-doador.html`, `dashboard-admin.html`, etc.)
@@ -102,27 +112,33 @@ Este repositório também pode ser publicado como uma **demo visual** no Vercel 
 - Dados salvos no MongoDB
 - Qualquer requisição feita via `frontend/assets/js/services/api.js`
 
-Ou seja: essa demo serve para **mostrar a interface**, não o sistema funcionando de ponta a ponta.
+Ou seja: essa demo serve para **mostrar a interface**, e não o sistema funcionando de ponta a ponta.
 
 ### 🚀 Como fazer o deploy no Vercel
 
-**Opção A — usando o `vercel.json` (recomendado)**
+**Opção A, usando o `vercel.json` (recomendado)**
 1. Suba este repositório (com o `vercel.json` na raiz) para o GitHub.
 2. No Vercel, importe o repositório normalmente.
-3. O `vercel.json` já diz pro Vercel usar a pasta `frontend/` como saída — não precisa mexer em Root Directory.
+3. O `vercel.json` já diz pro Vercel usar a pasta `frontend/` como saída, não precisa mexer em Root Directory.
 4. Deploy.
 
-**Opção B — configurando manualmente no painel**
+**Opção B, configurando manualmente no painel**
 1. No Vercel, ao importar o projeto, vá em **Root Directory** e selecione `frontend`.
-2. Não defina Build Command nem Output Directory (deixe em branco) — é HTML puro, sem build.
+2. Não defina Build Command nem Output Directory (deixe em branco), é HTML puro, sem build.
 3. Deploy.
 
 ### 🔧 Para uma demo 100% funcional (com backend)
 Seria necessário:
-1. Hospedar o backend Spring Boot em um serviço compatível (Render, Railway, Fly.io, etc. — o Vercel não roda Java).
+1. Hospedar o backend Spring Boot em um serviço compatível (Render, Railway, Fly.io etc.; o Vercel não roda Java).
 2. Hospedar o banco MongoDB (ex: MongoDB Atlas, tem plano grátis).
 3. Trocar a constante `API_BASE_URL` em `frontend/assets/js/services/api.js` (atualmente `http://localhost:8080`) para a URL pública do backend hospedado.
 4. Fazer o redeploy do frontend no Vercel.
 
-## 📧 Contato
-Para mais informações, entre em contato por e-mail: **profissionalba1is1a@gmail.com**
+## Autor
+
+**João Batista da Silva Neto**
+Front-end Lead & Scrum Master
+
+- GitHub: [@joaobatis1a](https://github.com/joaobatis1a)
+- LinkedIn: [joao-batista-silva-neto](https://linkedin.com/in/joao-batista-silva-neto)
+- E-mail: [profissionalba1is1a@gmail.com](mailto:profissionalba1is1a@gmail.com)
